@@ -120,7 +120,7 @@ main #about {
   font-family: "Kaushan Script", cursive;
   position: relative;
   width: 100%;
-  min-height: 70vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -160,6 +160,67 @@ main #skill {
   min-height: 100vh;
   background-color: black;
   color: antiquewhite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+@property --bgcolor {
+  main #skill {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+}
+@keyframes border-rotate {
+  from {
+    --bgcolor: 0deg;
+  }
+  to {
+    --bgcolor: 360deg;
+  }
+}
+main #skill .box {
+  background-color: black;
+  width: 100%;
+  min-height: 100vh;
+}
+main #skill .container {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 150px auto; /* Centered for a better look */
+  color: white;
+  box-shadow: 0 0 0px #03353d;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* The Animation */
+  animation: border-rotate 4s linear infinite;
+  /* The Fixes: 
+     1. Added a second 'black' to the linear-gradient
+     2. Removed extra () from var
+     3. Added a transparent border to reveal the conic-gradient */
+  background: linear-gradient(black, black) padding-box, conic-gradient(from var(--bgcolor), transparent, #03353d, transparent) border-box;
+  border: 0px solid rgba(255, 255, 255, 0);
+  transform: all 0.3s linear;
+  animation-play-state: paused;
+}
+main #skill .container img {
+  width: 200px;
+  border-radius: 9px;
+  display: block; /* Removes tiny bottom gap in containers */
+}
+main #skill .container:hover {
+  box-shadow: 0 0 50px #03353d;
+  border-width: 5px;
+  text-shadow: 0 0 10px #03353d;
+  color: #03353d;
+  animation-play-state: running;
+}
+main #skill .reveal {
+  color: black;
+  display: flex;
 }
 
 /* Mobile */
@@ -185,5 +246,8 @@ main #skill {
   }
   main #about .right img {
     width: 50%;
+  }
+  main #skill {
+    flex-direction: row;
   }
 }/*# sourceMappingURL=style.css.map */
