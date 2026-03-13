@@ -33,13 +33,13 @@ function swap() {
 }
 
 setInterval(swap, 30);
-let reveal = document.querySelectorAll("#skill .reveal")
+let reveal = document.querySelectorAll("#skill  .box2 .reveal")
 let container = document.querySelector("#skill .container");
 
 container.addEventListener("click", function(){
 
   reveal.forEach(function(el){
-    el.style.color = "white";
+    el.style.color = " #043742";
   })
 
 })
