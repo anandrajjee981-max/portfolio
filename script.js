@@ -43,3 +43,9 @@ container.addEventListener("click", function(){
   })
 
 })
+let card = document.querySelector("#thx .card");
+let thx = document.querySelector("#thx")
+thx.addEventListener('pointermove',function(val){
+  thx.style.setProperty("--x",val.clientX + "px")
+thx.style.setProperty("--y",val.clientY + "px")
+})

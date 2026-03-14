@@ -248,7 +248,7 @@ display: flex;
   }
   #project{
     width: 100%;
-    height: 100vh;
+    height: 100%;
     color: aliceblue;
     .bigbox{
       display: flex;
@@ -268,6 +268,28 @@ gap: 3px;
   transition: opacity 0.3s ease; /* Smooth transition */
 }
   }
+  :root{
+    x:400px;
+    y:400px;
+  }
+#thx {
+  width: 100%;
+  height: 100vh;
+  background-color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden; /* Keep the glow inside */
+}
+
+#thx .card {
+  position: absolute;
+  inset: 0; /* Shorthand for top/bottom/left/right: 0 */
+  /* Added fallback 50% 50% so it shows in the center by default */
+ background: radial-gradient(100px at var(--x) var(--y), rgba(255, 255, 255, 0), rgb(0, 0, 0));
+  pointer-events: none; /* Allows you to click things 'under' the glow */
+}
 }
 
 /* Mobile */

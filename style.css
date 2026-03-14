@@ -228,7 +228,7 @@ main #skill .box2 .reveal {
 }
 main #project {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   color: aliceblue;
 }
 main #project .bigbox {
@@ -245,6 +245,27 @@ main #project .bigbox:has(.box:hover) .box:not(:hover) {
   opacity: 0.5; /* Reduced further to make the effect noticeable */
   filter: blur(2px); /* Optional: adds a nice depth-of-field effect */
   transition: opacity 0.3s ease; /* Smooth transition */
+}
+main :root {
+  x: 400px;
+  y: 400px;
+}
+main #thx {
+  width: 100%;
+  height: 100vh;
+  background-color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden; /* Keep the glow inside */
+}
+main #thx .card {
+  position: absolute;
+  inset: 0; /* Shorthand for top/bottom/left/right: 0 */
+  /* Added fallback 50% 50% so it shows in the center by default */
+  background: radial-gradient(100px at var(--x) var(--y), rgba(255, 255, 255, 0), rgb(0, 0, 0));
+  pointer-events: none; /* Allows you to click things 'under' the glow */
 }
 
 /* Mobile */
