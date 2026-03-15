@@ -260,7 +260,48 @@ gap: 3px;
       background-color: #043742;
     }
     }
+  .box{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    .btn-asymmetric {
+  padding: 12px 30px;
+  background: #1a1a1a;
+  color: #00f2fe; /* Techy Cyan */
+  border: 1px solid #00f2fe;
+  /* Top-left is sharp, others are rounded */
+  border-radius: 0px 15px 15px 15px;
+  transition: 0.3s;
+}
+
+.btn-asymmetric:hover {
+  background: #00f2fe;
+  color: #1a1a1a;
+  border-radius: 15px 0px 15px 15px; /* Flips the sharp corner */
+}
+    
+    .img1{
+      width: 200px;
+      aspect-ratio: 1/1;
+border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   
+  /* Glassmorphism Core */
+  background: rgba(255, 255, 255, 0.1); 
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  
+  /* Techy Border & Shadow */
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  
+  overflow: hidden;
+}
+  .img2{
+    width: 200px;
+    aspect-ratio: 1/1;
+  }  
+  }
 
 .bigbox:has(.box:hover) .box:not(:hover) {
   opacity: 0.5; /* Reduced further to make the effect noticeable */
