@@ -1,17 +1,9 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+  --primary: #091413;
+  --secondary: #285A48;
+  --third:#285A48;
 }
 
-html, body {
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  color: antiquewhite;
-}
-
-/* Base Reset */
 * {
   margin: 0;
   padding: 0;
@@ -19,314 +11,95 @@ html, body {
 }
 
 body {
-  background-color: black;
-  color: antiquewhite;
-  font-family: "Segoe UI", sans-serif;
+  background-color: var(--primary);
+  width: 100%;
+  height: 100%;
+  font-family: "Orbitron", sans-serif;
+  overflow-x: hidden;
 }
 
-/* DESKTOP VIEW */
-@media (min-width: 768px) {
-  .hamburger {
-    display: none;
-  }
-  .nav-links {
-    position: static;
-    display: flex;
-    flex-direction: row;
-    height: auto;
-    width: auto;
-    background: transparent;
-    transition: none;
-  }
-  .nav-links li {
-    margin: 0 10px;
-  }
-}
-a {
-  text-decoration: none;
-  color: antiquewhite;
-}
-
-main .navbar {
+navbar {
+  z-index: 900;
+  width: 100%;
+  padding: 5px 4px;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--third);
+  backdrop-filter: 40px;
   position: sticky;
   top: 0;
   left: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 5%;
-  background: #000;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  height: 70px;
 }
-main .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-main {
-  /* Mobile Menu Drawer */
-}
-main .nav-links {
-  position: fixed;
-  top: 70px;
-  left: -100%; /* Hidden by default */
-  flex-direction: column;
-  background-color: #111;
-  width: 100%;
-  height: calc(100vh - 70px);
-  text-align: center;
-  transition: 0.3s ease-in-out;
-  display: flex;
-  list-style: none;
-}
-main .nav-links.active {
-  left: 0; /* Slides in */
-}
-main .nav-links li {
-  margin: 20px 0;
-  /* Fixed: Reserve space for border so text doesn't move */
-  border: 4px solid transparent;
-  display: inline-block;
-  align-self: center;
-}
-main .nav-links li:hover {
-  border: 4px solid #043742;
-}
-main .nav-links a {
-  color: antiquewhite;
-  text-decoration: none;
-  font-size: 1.2rem;
-  padding: 10px 20px;
-  display: block;
-}
-main {
-  /* Hamburger Icon */
-}
-main .hamburger {
+navbar i {
+  font-size: 2rem;
   cursor: pointer;
-  display: block;
-}
-main .bar {
-  display: block;
-  width: 25px;
-  height: 3px;
-  margin: 5px auto;
-  background-color: white;
-  transition: 0.3s;
-}
-main #about {
-  padding: 10px;
-  margin-top: 8rem;
-  font-family: "Kaushan Script", cursive;
-  position: relative;
-  width: 100%;
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-}
-main #about .left {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-main #about .left .hi {
-  color: #043742;
-  font-size: 3rem;
-}
-main #about .right img {
-  width: 80%;
-  aspect-ratio: 1/1;
-  clip-path: circle(50% at 50% 50%);
-}
-main #about .right img:hover {
-  transform: rotateZ(45deg);
-}
-main #about .social {
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  position: absolute;
-  color: antiquewhite;
-  bottom: 0;
-  right: 0;
-  font-size: 50px;
-}
-main #skill {
-  width: 100%;
-  min-height: 100vh;
-  background-color: black;
-  color: antiquewhite;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-@property --bgcolor {
-  main #skill {
-    syntax: "<angle>";
-    initial-value: 0deg;
-    inherits: false;
-  }
-}
-@keyframes border-rotate {
-  from {
-    --bgcolor: 0deg;
-  }
-  to {
-    --bgcolor: 360deg;
-  }
-}
-main #skill .box {
-  background-color: black;
-  min-height: 100vh;
-}
-main #skill .container {
-  width: -moz-fit-content;
-  width: fit-content;
-  /* Centered for a better look */
-  margin-top: 7rem;
-  color: white;
-  box-shadow: 0 0 0px #03353d;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  /* The Animation */
-  animation: border-rotate 4s linear infinite;
-  /* The Fixes: 
-     1. Added a second 'black' to the linear-gradient
-     2. Removed extra () from var
-     3. Added a transparent border to reveal the conic-gradient */
-  background: linear-gradient(black, black) padding-box, conic-gradient(from var(--bgcolor), transparent, #03353d, transparent) border-box;
-  border: 0px solid rgba(255, 255, 255, 0);
-  transform: all 0.3s linear;
-  animation-play-state: paused;
-}
-main #skill .container img {
-  width: 200px;
-  border-radius: 9px;
-  display: block; /* Removes tiny bottom gap in containers */
-}
-main #skill .container:hover {
-  box-shadow: 0 0 50px #03353d;
-  border-width: 5px;
-  text-shadow: 0 0 10px #03353d;
-  color: #03353d;
-  animation-play-state: running;
-}
-main #skill .box2 {
-  margin: 150px auto;
-}
-main #skill .box2 .reveal {
-  color: black;
-  display: flex;
-}
-main #project {
-  width: 100%;
-  height: 100%;
-  color: aliceblue;
-}
-main #project .bigbox {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 3px;
-}
-main #project .bigbox .box {
-  width: 300px;
-  height: 300px;
-  background-color: #043742;
-}
-main #project .box {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-main #project .box .btn-asymmetric {
-  padding: 12px 30px;
-  background: #1a1a1a;
-  color: #00f2fe; /* Techy Cyan */
-  border: 1px solid #00f2fe;
-  /* Top-left is sharp, others are rounded */
-  border-radius: 0px 15px 15px 15px;
-  transition: 0.3s;
-}
-main #project .box .btn-asymmetric:hover {
-  background: #00f2fe;
-  color: #1a1a1a;
-  border-radius: 15px 0px 15px 15px; /* Flips the sharp corner */
-}
-main #project .box .img1 {
-  width: 200px;
-  aspect-ratio: 1/1;
-  border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
-  /* Glassmorphism Core */
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  /* Techy Border & Shadow */
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  overflow: hidden;
-}
-main #project .box .img2 {
-  width: 200px;
-  aspect-ratio: 1/1;
-}
-main #project .bigbox:has(.box:hover) .box:not(:hover) {
-  opacity: 0.5; /* Reduced further to make the effect noticeable */
-  filter: blur(2px); /* Optional: adds a nice depth-of-field effect */
-  transition: opacity 0.3s ease; /* Smooth transition */
-}
-main :root {
-  x: 400px;
-  y: 400px;
-}
-main #thx {
-  width: 100%;
-  height: 100vh;
-  background-color: #111;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden; /* Keep the glow inside */
-}
-main #thx .card {
-  position: absolute;
-  inset: 0; /* Shorthand for top/bottom/left/right: 0 */
-  /* Added fallback 50% 50% so it shows in the center by default */
-  background: radial-gradient(100px at var(--x) var(--y), rgba(255, 255, 255, 0), rgb(0, 0, 0));
-  pointer-events: none; /* Allows you to click things 'under' the glow */
 }
 
-/* Mobile */
-@media (min-width: 768px) {
-  .navbar .nav-links {
-    position: static;
-    display: flex;
-    flex-direction: row;
-    background: none;
-    width: auto;
+.reveal i {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 2rem;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  padding: 2px;
+  z-index: 1000;
+}
+.reveal {
+  width: 40%;
+  height: 100%;
+  position: fixed;
+  right: -40%;
+  background-color: rgba(255, 255, 255, 0.314);
+  backdrop-filter: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 3px;
+  z-index: 999;
+}
+
+main #view1 {
+  text-align: center;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+main #view1 .intro {
+  font-size: 20rem;
+  font-family: "Carter One", system-ui;
+  color: var(--secondary);
+}
+main #view1 h1 {
+  color: var(--secondary);
+}
+main #view2 {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--primary);
+  display: flex;
+}
+main #view2 .text {
+  color: var(--secondary);
+  margin-top: 10%;
+}
+main #view2 img {
+  width: 30%;
+  aspect-ratio: 1/1;
+  border-radius: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  main #view1 .intro {
+    font-size: 5rem !important;
   }
-  .navbar .nav-links li {
-    margin: 0 20px;
+  main #view2 {
+    flex-direction: column-reverse;
   }
-  .navbar .hamburger {
-    display: none;
-  }
-  main #about {
-    margin-top: 5%;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-  main #about .right img {
-    width: 50%;
+  main #view2 img {
+    width: 100%;
   }
 }/*# sourceMappingURL=style.css.map */
