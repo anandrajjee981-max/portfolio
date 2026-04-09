@@ -1,7 +1,47 @@
+let introElement = document.querySelector("#view1 .intro");
+let introText = introElement.innerText;
+
+function createMagic() {
+    let splitText = introText.split("");
+    let halfIndex = Math.floor(splitText.length / 2);
+    let clutter = "";
+
+    splitText.forEach(function(elem, idx) {
+        if (idx < halfIndex) {
+            // Added 'inline-block' so 'y' transforms work properly
+            clutter += `<span class="left" style="display:inline-block">${elem}</span>`;
+        } else {
+            clutter += `<span class="right" style="display:inline-block">${elem}</span>`;
+        }
+    });
+
+    introElement.innerHTML = clutter;
+}
+
+createMagic();
+
+var t0 = gsap.timeline();
+
+// Animating the first half
+t0.from("#view1 .left", {
+    y: 50,
+    opacity: 0,
+    stagger: 0.15,
+    duration: 0.8,
+    ease: "power2.out"
+}); // Labeled "start"
+
+// Animating the second half (stagger is negative to go backwards)
+t0.from("#view1 .right", {
+    y: 50,
+    opacity: 0,
+    stagger: -0.15, 
+    duration: 0.8,
+    ease: "power2.out"
+}); // Also starts at "start" so they play together
 
 
-//  VIEW 1 (Hero Animation)
-gsap.from("#view1 h1", {
+t0.from("#view1 my", {
   y: 50,
   opacity: 0,
   duration: 1.2,
@@ -126,4 +166,4 @@ ScrollTrigger.create({  //yhe wala isley lga kyoki yey agr nhi rehta too infinit
   onLeave: () => t3.pause(),
   onEnterBack: () => t3.play(),
   onLeaveBack: () => t3.pause()
-});
+})
