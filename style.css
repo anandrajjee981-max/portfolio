@@ -4,6 +4,11 @@
   --third:#285A48;
 }
 
+a {
+  text-decoration: none;
+  color: antiquewhite;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -19,6 +24,7 @@ body {
 }
 
 navbar {
+  color: var(--primary);
   z-index: 900;
   width: 100%;
   padding: 5px 4px;
@@ -81,6 +87,7 @@ main #view2 {
   min-height: 100vh;
   background-color: var(--primary);
   display: flex;
+  justify-content: space-between;
 }
 main #view2 .text {
   color: var(--secondary);
@@ -91,15 +98,70 @@ main #view2 img {
   aspect-ratio: 1/1;
   border-radius: 15px;
 }
+main #view3 {
+  color: #091413;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+main #view3 #skillbox {
+  width: 50%;
+  border: 2px solid var(--secondary);
+  border-radius: 15px;
+  padding: 10px 20px;
+}
+main #view3 #skillbox .skill {
+  text-align: center;
+  width: 100%;
+  font-size: 3rem;
+  background-color: #B0E4CC;
+  padding-bottom: 4px 5px;
+  margin: 4px;
+  border-radius: 15px;
+}
+main #view3 #skillbox .myskill {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+main #view3 #skillbox .myskill span {
+  background-color: #B0E4CC;
+  padding-bottom: 4px 5px;
+  margin: 2px;
+  border-radius: 5px;
+}
+main #view3 img {
+  width: 15%;
+  aspect-ratio: 1/1;
+  border-radius: 20px;
+}
 
 @media screen and (max-width: 768px) {
   main #view1 .intro {
     font-size: 5rem !important;
   }
+  .reveal {
+    width: 100%;
+    right: -100%;
+  }
   main #view2 {
     flex-direction: column-reverse;
+    justify-content: center;
+  }
+  main #view2 .text {
+    margin-top: none;
   }
   main #view2 img {
     width: 100%;
+  }
+  main #view3 #skillbox {
+    width: 100%;
+  }
+  main #view3 img {
+    width: 59%;
   }
 }/*# sourceMappingURL=style.css.map */

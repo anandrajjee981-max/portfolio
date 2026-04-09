@@ -4,6 +4,10 @@
   --secondary: #285A48;
   --third:#285A48;
 }
+a{
+  text-decoration: none;
+  color: antiquewhite;
+}
 
 * {
   margin: 0;
@@ -19,6 +23,7 @@ body {
    overflow-x: hidden;
 }
 navbar{
+  color: var(--primary);
   z-index: 900;
  width: 100%;
  padding: 5px 4px;
@@ -88,6 +93,7 @@ main {
     min-height: 100vh;
     background-color: var(--primary);
     display: flex;
+    justify-content: space-between;
     .text{
       color: var(--secondary);
       margin-top: 10%;
@@ -97,95 +103,95 @@ main {
       aspect-ratio: 1/1;
       border-radius: 15px;
     }
+  }  
+
+  #view3{
+    color: #091413;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+
+    #skillbox{
+      width: 50%;
+      border: 2px solid var(--secondary);
+      border-radius: 15px;
+      padding: 10px 20px;
+      .skill{
+        text-align: center;
+        width: 100%;
+        font-size: 3rem;
+        background-color: #B0E4CC;
+        padding-bottom: 4px 5px;
+        margin: 4px;
+        border-radius: 15px;
+
+      }
+    .myskill{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+
+        span{
+         background-color: #B0E4CC;
+        padding-bottom: 4px 5px;
+        margin: 2px;
+        border-radius: 5px;
+      }
+    }
+      
+
+    }
+    img{
+        width: 15%;
+        aspect-ratio: 1/1;
+        border-radius: 20px;
+        
+
+      }
   }
 }
 
-// 3. NAVBAR
-// .navbar {
-//   background: #0f0f0f;
-//   height: 80px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   position: sticky;
-//   top: 0;
-//   z-index: 999;
 
-//   .navbar-container {
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-//     width: 100%;
-//     max-width: 1200px;
-//     padding: 0 20px;
 
-//     .logo {
-//       color: #ffffff;
-//       font-size: 1.5rem;
-//       font-weight: bold;
-//       text-decoration: none;
-//     }
-//   }
 
-//   .menu-toggle {
-//     display: none; // Hidden on desktop
-//     .bar {
-//       display: block;
-//       width: 25px;
-//       height: 3px;
-//       margin: 5px auto;
-//       background: #ffffff;
-//     }
-//   }
-
-//   .nav-links {
-//     display: flex;
-//     list-style: none;
-//     li {
-//       margin-left: 20px;
-//       a {
-//         color: #ffffff;
-//         text-decoration: none;
-//       }
-//     }
-//   }
-// }
 
 // 4. MOBILE RESPONSIVE (At the very bottom, not nested)
 @media screen and (max-width: 768px) {
   // This targets main directly
   main #view1 .intro {
     font-size: 5rem !important; 
+  }  
+  .reveal{
+    width: 100%;
+right: -100%;
+
   }
 main{
+  
   #view2{
     flex-direction: column-reverse;
+    justify-content: center;
+    .text{
+      margin-top: none;
+    }
     img{
       width: 100%;
+    }
+  }
+  #view3{
+    #skillbox{
+      width: 100%;
+    }
+    img{
+      width: 59%;
     }
   }
 }     
 
 
 
-
-
-
-  // .navbar {
-  //   .menu-toggle {
-  //     display: block !important;
-  //   }
-  //   .nav-links {
-  //     display: none;
-  //     &.active {
-  //       display: flex;
-  //       position: absolute;
-  //       top: 80px;
-  //       left: 0;
-  //       width: 100%;
-  //       background: #0f0f0f;
-  //       flex-direction: column;
-  //     }
-  //   }
-  // }
 }
