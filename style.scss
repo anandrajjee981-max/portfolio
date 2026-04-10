@@ -2,11 +2,7 @@
 :root {
   --primary: #091413;
   --secondary: #285A48;
-  --third:#285A48;
-}
-a{
-  text-decoration: none;
-  color: antiquewhite;
+  --third: #285A48;
 }
 
 * {
@@ -15,97 +11,110 @@ a{
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+  color: antiquewhite;
+}
+
 body {
   background-color: var(--primary);
   width: 100%;
   height: 100%;
-   font-family: "Orbitron", sans-serif;
-   overflow-x: hidden;
+  font-family: "Orbitron", sans-serif;
+  overflow-x: hidden;
 }
-navbar{
+
+// FIX: Added 'px' to backdrop-filter (calc requires units or specific values)
+navbar {
   color: var(--primary);
   z-index: 900;
- width: 100%;
- padding: 5px 4px;
- display: flex;
- justify-content: space-between;
- background-color: var(--third);
- backdrop-filter: calc(40px);
- position: sticky;
- top: 0;
- left: 0;
-i{
-  font-size: 2rem;
-  cursor: pointer;
-}
+  width: 100%;
+  padding: 5px 4px;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--third);
+  backdrop-filter: blur(40px); // Changed from calc(40px) which is invalid
+  position: sticky;
+  top: 0;
+  left: 0;
 
-}
-.reveal{
-
-  i{
-     cursor: pointer;
-    position: absolute;
-    top: 0;
-    right: 0;
+  i {
     font-size: 2rem;
-    border: 2px solid var(--primary);
-    border-radius: 50%;
-padding: 2px;
-z-index: 1000;
-
+    cursor: pointer;
   }
+}
+
+.reveal {
   width: 40%;
   height: 100%;
   position: fixed;
   right: -40%;
-  background-color: rgba(255, 255, 255, 0.314);
-   backdrop-filter: calc(40px);
-   display: flex;
-   flex-direction: column;
-   gap: 2px;
-   padding: 10px 3px;
-   z-index: 999;
+  background-color: rgba(255, 255, 255, 0.1); // Lightened for visibility
+  backdrop-filter: blur(40px);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 3px;
+  z-index: 999;
+  transition: right 0.3s ease; // Added transition for smooth entry
 
+  i {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    padding: 2px;
+    z-index: 1000;
+  }
 }
 
-// 2. MAIN CONTENT (Separate from Navbar)
+// 2. MAIN CONTENT
 main {
   #view1 {
     text-align: center;
     width: 100%;
     min-height: 100vh;
-    display: flex; // Added to help center text
+    display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 
     .intro {
-      font-size: 20rem; 
-      
-  font-family: "Carter One", system-ui;
+      font-size: 15rem; // Reduced slightly for better fit
+      font-family: "Carter One", system-ui;
       color: var(--secondary);
+      line-height: 1;
     }
     h1 {
       color: var(--secondary);
     }
-  } 
-  #view2{
+  }
+
+  #view2 {
     width: 100%;
     min-height: 100vh;
     background-color: var(--primary);
     display: flex;
     justify-content: space-between;
-    .text{
+    align-items: center;
+    padding: 0 5%;
+
+    .text {
       color: var(--secondary);
-      margin-top: 10%;
+      flex: 1;
     }
-    img{
+    img {
       width: 30%;
       aspect-ratio: 1/1;
       border-radius: 15px;
+      object-fit: cover;
     }
-  }  
+  }
 
-  #view3{
+  #view3 {
     color: #091413;
     width: 100%;
     min-height: 100vh;
@@ -114,297 +123,182 @@ main {
     justify-content: space-around;
     flex-direction: column;
 
-    #skillbox{
+    #skillbox {
       width: 50%;
       border: 2px solid var(--secondary);
       border-radius: 15px;
-      padding: 10px 20px;
-      .skill{
+      padding: 20px;
+
+      .skill {
         text-align: center;
         width: 100%;
-        font-size: 3rem;
-        background-color: #B0E4CC;
-        padding-bottom: 4px 5px;
-        margin: 4px;
+        font-size: 2.5rem;
+        background-color: #b0e4cc;
+        padding: 10px;
+        margin-bottom: 15px;
         border-radius: 15px;
-
       }
-    .myskill{
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      align-items: center;
+      .myskill {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
 
-        span{
-         background-color: #B0E4CC;
-        padding-bottom: 4px 5px;
-        margin: 2px;
-        border-radius: 5px;
-      }
-    }
-      
-
-    }
-    img{
-        width: 15%;
-        aspect-ratio: 1/1;
-        border-radius: 20px;
-        
-
-      }
-  } 
-#view4 {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  
-  background: #091413; // Your Primary Color
-  h2{
-   
-    color: var(--secondary);
-  }
-.container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 25px;
-}
-  .pro {
-    width: 300px;
-    // Thoda sa lighter version of primary for the card body
-    background: lighten(#091413, 2%); 
-    padding: 16px;
-    border-radius: 32px; // More rounded = more modern
-    
-    // Border with a hint of green-glow
-    border: 1px solid rgba(16, 185, 129, 0.1); 
-    
-    // Shadow that blends with the dark green base
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-    &:hover {
-      transform: translateY(-12px);
-      border-color: rgba(16, 185, 129, 0.3); // Emerald glow on hover
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
-    }
-
-    .img-container {
-      position: relative;
-      width: 100%;
-      height: 380px;
-      border-radius: 24px;
-      overflow: hidden;
-      background: #050a0a; // Deep dark green-black
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        opacity: 0.85;
-        transition: transform 0.6s ease, opacity 0.6s ease;
-      }
-
-      // The "Embedded" Inset Shadow Layer
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 24px;
-        pointer-events: none;
-        
-        // Deep shadows that match the #091413 vibe
-        box-shadow: 
-          inset 0px 12px 20px rgba(0, 0, 0, 0.9), 
-          inset 0px -5px 15px rgba(0, 0, 0, 0.6),
-          inset 0px 0px 0px 1px rgba(255, 255, 255, 0.03); // Tiny inner rim
+        span {
+          background-color: #b0e4cc;
+          padding: 8px 12px;
+          border-radius: 5px;
+        }
       }
     }
-
-    &:hover .img-container img {
-      transform: scale(1.08);
-      opacity: 1;
-    }
-
-    .title {
-      color: #e2e8f0; // Off-white for better readability on dark green
-      font-family: 'Inter', sans-serif;
-      text-align: center;
-      margin-top: 18px;
-      font-size: 1.1rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      opacity: 0.9;
+    img {
+      width: 15%;
+      aspect-ratio: 1/1;
+      border-radius: 20px;
     }
   }
-}
-#view5 {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  
-  background: #091413; // Your Primary Color
-  h2{
-   
-    color: var(--secondary);
-  }
-.container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 25px;
-}
-  .pro {
-    width: 300px;
-    // Thoda sa lighter version of primary for the card body
-    background: lighten(#091413, 2%); 
-    padding: 16px;
-    border-radius: 32px; // More rounded = more modern
-    
-    // Border with a hint of green-glow
-    border: 1px solid rgba(16, 185, 129, 0.1); 
-    
-    // Shadow that blends with the dark green base
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-    &:hover {
-      transform: translateY(-12px);
-      border-color: rgba(16, 185, 129, 0.3); // Emerald glow on hover
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
-    }
-
-    .img-container {
-      position: relative;
-      width: 100%;
-      height: 380px;
-      border-radius: 24px;
-      overflow: hidden;
-      background: #050a0a; // Deep dark green-black
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        opacity: 0.85;
-        transition: transform 0.6s ease, opacity 0.6s ease;
-      }
-
-      // The "Embedded" Inset Shadow Layer
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 24px;
-        pointer-events: none;
-        
-        // Deep shadows that match the #091413 vibe
-        box-shadow: 
-          inset 0px 12px 20px rgba(0, 0, 0, 0.9), 
-          inset 0px -5px 15px rgba(0, 0, 0, 0.6),
-          inset 0px 0px 0px 1px rgba(255, 255, 255, 0.03); // Tiny inner rim
-      }
-    }
-
-    &:hover .img-container img {
-      transform: scale(1.08);
-      opacity: 1;
-    }
-
-    .title {
-      color: #e2e8f0; // Off-white for better readability on dark green
-      font-family: 'Inter', sans-serif;
-      text-align: center;
-      margin-top: 18px;
-      font-size: 1.1rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      opacity: 0.9;
-    }
-  }     
-.flag{
-width: 100%;
-position: absolute;
-bottom: 0;
-left: 0;
-display: flex;
-padding: 2rem 0rem;
-background-color: var(--secondary);
-color: var(--primary);
-gap: 3px;
-flex-shrink: 0;
-.block{
-  display: flex;
-  flex-shrink: 0;
-  gap: 4px;
-  img{
-    width: 40px;
-    aspect-ratio: 1/1;
-
-  }
-
-}
-
-}
-
-
-
-
-}
-#view6{
-  width: 100%;
-  min-height: 100vh;
-}
-
-}
-
-
-
-
-
-// 4. MOBILE RESPONSIVE (At the very bottom, not nested)
-@media screen and (max-width: 768px) {
-  // This targets main directly
-  main #view1 .intro {
-    font-size: 5rem !important; 
-  }  
-  .reveal{
+  // Views 4 & 5 shared logic
+  #view4, #view5 {
+    position: relative;
     width: 100%;
-right: -100%;
+    min-height: 100vh;
+    background: #091413;
+    padding: 50px 0;
 
+    h2 {
+      color: var(--secondary);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    .pro {
+      width: 300px;
+      background: lighten(#091413, 3%);
+      padding: 16px;
+      border-radius: 32px;
+      border: 1px solid rgba(16, 185, 129, 0.1);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+      &:hover {
+        transform: translateY(-12px);
+        border-color: rgba(16, 185, 129, 0.3);
+      }
+
+      .img-container {
+        position: relative;
+        width: 100%;
+        height: 380px;
+        border-radius: 24px;
+        overflow: hidden;
+        background: #050a0a;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0.85;
+          transition: transform 0.6s ease, opacity 0.6s ease;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: 24px;
+          pointer-events: none;
+          box-shadow: 
+            inset 0px 12px 20px rgba(0, 0, 0, 0.9), 
+            inset 0px -5px 15px rgba(0, 0, 0, 0.6);
+        }
+      }
+
+      &:hover .img-container img {
+        transform: scale(1.08);
+        opacity: 1;
+      }
+
+      .title {
+        color: #e2e8f0;
+        text-align: center;
+        margin-top: 18px;
+        font-weight: 500;
+      }
+    }
   }
-main{
-  
-  #view2{
-    flex-direction: column-reverse;
-    justify-content: center;
-    .text{
-      margin-top: none;
-    }
-    img{
-      width: 100%;
+
+  #view5 .flag {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    padding: 2rem 0;
+    background-color: var(--secondary);
+    color: var(--primary);
+    overflow: hidden; // For marquee effects if needed
+
+    .block {
+      display: flex;
+      flex-shrink: 0;
+      gap: 10px;
+      img {
+        width: 40px;
+        aspect-ratio: 1/1;
+      }
     }
   }
-  #view3{
-    #skillbox{
-      width: 100%;
+
+  #view6 {
+    width: 100%;
+    min-height: 100vh;
+  }
+}
+
+// 3. MOBILE RESPONSIVE
+@media screen and (max-width: 768px) {
+  main #view1 .intro {
+    font-size: 4rem !important;
+  }
+
+  .reveal {
+    width: 100%;
+    right: -100%;
+  }
+
+  main {
+    #view2 {
+      flex-direction: column-reverse;
+      padding: 20px;
+      text-align: center;
+      img {
+        width: 80%;
+        margin-bottom: 20px;
+      }
     }
-    img{
-      width: 59%;
+
+    #view3 {
+      #skillbox {
+        width: 90%;
+      }
+      img {
+        width: 50%;
+        margin-top: 20px;
+      }
+    }
+    #view5{
+      .flag{
+      bottom: -5%;
+      }
     }
   }
-}     
-
-
-
 }
