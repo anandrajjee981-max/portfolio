@@ -1,81 +1,84 @@
-let introElement = document.querySelector("#view1 .intro");
-let introText = introElement.innerText;
+// ================= INTRO TEXT SPLIT =================
+const introElement = document.querySelector("#view1 .intro");
 
-function createMagic() {
+if (introElement) {
+  const introText = introElement.innerText;
+
+  function createMagic() {
     let splitText = introText.split("");
     let halfIndex = Math.floor(splitText.length / 2);
     let clutter = "";
 
-    splitText.forEach(function(elem, idx) {
-        if (idx < halfIndex) {
-            // Added 'inline-block' so 'y' transforms work properly
-            clutter += `<span class="left" style="display:inline-block">${elem}</span>`;
-        } else {
-            clutter += `<span class="right" style="display:inline-block">${elem}</span>`;
-        }
+    splitText.forEach((elem, idx) => {
+      if (idx < halfIndex) {
+        clutter += `<span class="left">${elem}</span>`;
+      } else {
+        clutter += `<span class="right">${elem}</span>`;
+      }
     });
 
     introElement.innerHTML = clutter;
+  }
+
+  createMagic();
 }
 
-createMagic();
+// ================= GSAP TIMELINE 1 =================
+const t0 = gsap.timeline();
 
-var t0 = gsap.timeline();
-
-// Animating the first half
+// Left + Right together
 t0.from("#view1 .left", {
-    y: 50,
-    opacity: 0,
-    stagger: 0.15,
-    duration: 0.8,
-    ease: "power2.out"
-}); // Labeled "start"
+  y: 50,
+  opacity: 0,
+  stagger: 0.15,
+  duration: 0.8,
+  ease: "power2.out"
+}, "start");
 
-// Animating the second half (stagger is negative to go backwards)
 t0.from("#view1 .right", {
-    y: 50,
-    opacity: 0,
-    stagger: -0.15, 
-    duration: 0.8,
-    ease: "power2.out"
-}); // Also starts at "start" so they play together
+  y: 50,
+  opacity: 0,
+  stagger: -0.15,
+  duration: 0.8,
+  ease: "power2.out"
+}, "start");
 
-
-t0.from("#view1 my", {
+// FIXED selector (.my)
+t0.from("#view1 .my", {
   y: 50,
   opacity: 0,
   duration: 1.2,
-  stagger: 0.3,
-  
-  yoyo: true
+  stagger: 0.3
 });
 
-// MENU REVEAL 
+
+// ================= MENU REVEAL =================
 const reveal = document.querySelector(".reveal");
 const forward = document.querySelector(".forward");
 const cross = document.querySelector(".reveal .cross");
 
 const t1 = gsap.timeline({ paused: true });
 
-t1.to(reveal, {
-  x: "-100%",
-  duration: 0.5,
-  ease: "power2.inOut"
-})
-.from(".reveal h2", {
-  opacity: 0,
-  x: 30,
-  duration: 0.4,
-  stagger: 0.1,
-  ease: "power1.out"
-})
-.from(cross, {
-  x: 30,
-  opacity: 0,
-  duration: 0.3,
-  ease: "power1.out"
-});
-
+if (reveal) {
+  t1.to(reveal, {
+    x: "-100%",
+    duration: 0.5,
+    ease: "power2.inOut"
+  })
+  .from(".reveal h2", {
+    opacity: 0,
+    x: 30,
+    duration: 0.4,
+    stagger: 0.1,
+    ease: "power1.out"
+  })
+  .from(cross, {
+    x: 30,
+    opacity: 0,
+    duration: 0.3,
+    ease: "power1.out"
+  });
+}
 
 if (forward && cross) {
   forward.addEventListener("click", () => t1.play());
@@ -83,49 +86,45 @@ if (forward && cross) {
 }
 
 
+// ================= VIEW 2 SCROLL =================
 const view2 = document.querySelector("#view2");
 const view2Img = document.querySelector("#view2 img");
 const view2Text = document.querySelectorAll("#view2 .text h2");
 
-const newImg = "anand.jpeg"; //hard coded image nhi aaye isley yha variable mein define kiye 
+const newImg = "anand.jpeg";
 
-const t2 = gsap.timeline({
-  scrollTrigger: {
-    trigger: view2,
-    start: "top 20%",
-    end: "top -100%",
-    scrub: 2,
-    pin: true,
-    scroller: "body"
-  }
-});
+if (view2 && view2Img) {
+  const t2 = gsap.timeline({
+    scrollTrigger: {
+      trigger: view2,
+      start: "top 20%",
+      end: "top -100%",
+      scrub: 2,
+      pin: true
+    }
+  });
 
-// Text reveal
-t2.from(view2Text, {
-  y: -40,
-  opacity: 0,
-  stagger: 0.3,
-  duration: 0.6
-})
-
-// Fade out old image
-.to(view2Img, {
-  opacity: 0,
-  duration: 0.5
-})
-
-// Change image
-.set(view2Img, {
-  attr: { src: newImg }
-})
-
-// Fade in new image
-.to(view2Img, {
-  opacity: 1,
-  duration: 0.5
-});
+  t2.from(view2Text, {
+    y: -40,
+    opacity: 0,
+    stagger: 0.3,
+    duration: 0.6
+  })
+  .to(view2Img, {
+    opacity: 0,
+    duration: 0.5
+  })
+  .set(view2Img, {
+    attr: { src: newImg }
+  })
+  .to(view2Img, {
+    opacity: 1,
+    duration: 0.5
+  });
+}
 
 
+// ================= VIEW 3 IMAGE LOOP =================
 const img1 = document.querySelector("#view3 img");
 
 const images = [
@@ -136,34 +135,80 @@ const images = [
   "https://i.pinimg.com/736x/7f/d8/ae/7fd8ae75fbf4343a8814ebeb31e89099.jpg",
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiveycOrxg_87ptVrOKT9j6OatggrM1DsOYA&s",
   "https://i.pinimg.com/736x/44/59/32/4459321c4e61adc58c584aa00788d148.jpg",
-  "https://i.pinimg.com/736x/cf/5f/7d/cf5f7dca8d30d52a39f4043f3796d7f0.jpg"
+  "https://i.pinimg.com/736x/cf/5f/7d/cf5f7dca8d30d52a39f4043f3796d7f0.jpg",
+  "https://i.pinimg.com/736x/c9/5b/6c/c95b6c63866e63b5de07117256a320cc.jpg"
 ];
 
-// Timeline (paused for performance control)
-const t3 = gsap.timeline({ repeat: -1, paused: true });
+if (img1) {
+  const t3 = gsap.timeline({ repeat: -1, paused: true });
 
-images.forEach((url) => {
-  t3.to(img1, {
-    opacity: 0,
-    y: 20,
-    scale: 0.95,
-    duration: 0.4,
-    ease: "power2.in"
-  })
-  .set(img1, { attr: { src: url } })
-  .fromTo(img1,
-    { opacity: 0, y: -20, scale: 1.05 },
-    { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.7)" }
-  )
-  .to({}, { duration: 1.5 });
+  images.forEach((url) => {
+    t3.to(img1, {
+      opacity: 0,
+      y: 20,
+      scale: 0.95,
+      duration: 0.4,
+      ease: "power2.in"
+    })
+    .set(img1, { attr: { src: url } })
+    .fromTo(img1,
+      { opacity: 0, y: -20, scale: 1.05 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.7)" }
+    )
+    .to({}, { duration: 1.5 });
+  });
+
+  ScrollTrigger.create({
+    trigger: "#view3",
+    onEnter: () => t3.play(),
+    onLeave: () => t3.pause(),
+    onEnterBack: () => t3.play(),
+    onLeaveBack: () => t3.pause()
+  });
+}
+
+
+// ================= VIEW 5 WHEEL =================
+const img = document.querySelectorAll("#view5 .flag .block img");
+
+const flag = document.querySelector("#view5");
+
+const block = document.querySelectorAll("#view5 .flag .block");
+
+let isAnimating = false;
+
+window.addEventListener("wheel", (e) => {
+  if (isAnimating) return;
+  isAnimating = true;
+
+  if (e.deltaY > 0) {
+    // SCROLL DOWN
+    gsap.to(block, {
+      xPercent: -100, // Using xPercent for smoother infinite feel
+      duration: 2,
+      repeat: -1,
+      ease: "none",
+    });
+
+    gsap.to(img, {
+      rotate: 180, // Absolute value: moves to 180 and stays there
+      duration: 0.5,
+      onComplete: () => { isAnimating = false; } // Reset flag when done
+    });
+
+  } else {
+    // SCROLL UP (BACK)
+    gsap.to(block, {
+      xPercent: 0,
+      duration: 2,
+      repeat: -1,
+      ease: "none",
+    });
+
+    gsap.to(img, {
+      rotate: 0, // Absolute value: returns to original 0
+      duration: 0.5,
+      onComplete: () => { isAnimating = false; } // Reset flag when done
+    });
+  }
 });
-
-
-ScrollTrigger.create({  //yhe wala isley lga kyoki yey agr nhi rehta too infinite loop 
-// main chlta jo cpu k liye thik nhi isly jbb user iss page pay aaye tbb hee yee kaam kree
-  trigger: "#view3",
-  onEnter: () => t3.play(),
-  onLeave: () => t3.pause(),
-  onEnterBack: () => t3.play(),
-  onLeaveBack: () => t3.pause()
-})

@@ -157,19 +157,19 @@ main {
   position: relative;
   width: 100%;
   min-height: 100vh;
+  
+  background: #091413; // Your Primary Color
+  h2{
+   
+    color: var(--secondary);
+  }
+.container{
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 25px;
-  background: #091413; // Your Primary Color
-  h2{
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: var(--secondary);
-  }
-
+}
   .pro {
     width: 300px;
     // Thoda sa lighter version of primary for the card body
@@ -243,7 +243,128 @@ main {
     }
   }
 }
+#view5 {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  
+  background: #091413; // Your Primary Color
+  h2{
+   
+    color: var(--secondary);
+  }
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+  .pro {
+    width: 300px;
+    // Thoda sa lighter version of primary for the card body
+    background: lighten(#091413, 2%); 
+    padding: 16px;
+    border-radius: 32px; // More rounded = more modern
+    
+    // Border with a hint of green-glow
+    border: 1px solid rgba(16, 185, 129, 0.1); 
+    
+    // Shadow that blends with the dark green base
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
+    &:hover {
+      transform: translateY(-12px);
+      border-color: rgba(16, 185, 129, 0.3); // Emerald glow on hover
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+    }
+
+    .img-container {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #050a0a; // Deep dark green-black
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        opacity: 0.85;
+        transition: transform 0.6s ease, opacity 0.6s ease;
+      }
+
+      // The "Embedded" Inset Shadow Layer
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 24px;
+        pointer-events: none;
+        
+        // Deep shadows that match the #091413 vibe
+        box-shadow: 
+          inset 0px 12px 20px rgba(0, 0, 0, 0.9), 
+          inset 0px -5px 15px rgba(0, 0, 0, 0.6),
+          inset 0px 0px 0px 1px rgba(255, 255, 255, 0.03); // Tiny inner rim
+      }
+    }
+
+    &:hover .img-container img {
+      transform: scale(1.08);
+      opacity: 1;
+    }
+
+    .title {
+      color: #e2e8f0; // Off-white for better readability on dark green
+      font-family: 'Inter', sans-serif;
+      text-align: center;
+      margin-top: 18px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      opacity: 0.9;
+    }
+  }     
+.flag{
+width: 100%;
+position: absolute;
+bottom: 0;
+left: 0;
+display: flex;
+padding: 2rem 0rem;
+background-color: var(--secondary);
+color: var(--primary);
+gap: 3px;
+flex-shrink: 0;
+.block{
+  display: flex;
+  flex-shrink: 0;
+  gap: 4px;
+  img{
+    width: 40px;
+    aspect-ratio: 1/1;
+
+  }
+
+}
+
+}
+
+
+
+
+}
+#view6{
+  width: 100%;
+  min-height: 100vh;
+}
 
 }
 
