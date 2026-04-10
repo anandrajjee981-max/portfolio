@@ -139,6 +139,79 @@ main #view3 img {
   aspect-ratio: 1/1;
   border-radius: 20px;
 }
+main #view4 {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  background: #091413;
+}
+main #view4 h2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--secondary);
+}
+main #view4 .pro {
+  width: 300px;
+  background: rgb(12.1655172414, 27.0344827586, 25.6827586207);
+  padding: 16px;
+  border-radius: 32px;
+  border: 1px solid rgba(16, 185, 129, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+main #view4 .pro:hover {
+  transform: translateY(-12px);
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+}
+main #view4 .pro .img-container {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #050a0a;
+}
+main #view4 .pro .img-container img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+  opacity: 0.85;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+main #view4 .pro .img-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  pointer-events: none;
+  box-shadow: inset 0px 12px 20px rgba(0, 0, 0, 0.9), inset 0px -5px 15px rgba(0, 0, 0, 0.6), inset 0px 0px 0px 1px rgba(255, 255, 255, 0.03);
+}
+main #view4 .pro:hover .img-container img {
+  transform: scale(1.08);
+  opacity: 1;
+}
+main #view4 .pro .title {
+  color: #e2e8f0;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  margin-top: 18px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+}
 
 @media screen and (max-width: 768px) {
   main #view1 .intro {
