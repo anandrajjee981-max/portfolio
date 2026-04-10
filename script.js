@@ -177,38 +177,33 @@ const block = document.querySelectorAll("#view5 .flag .block");
 
 let isAnimating = false;
 
-window.addEventListener("wheel", (e) => {
+// Ek function banate hain jo direction handle kare
+function handleScroll(direction) {
   if (isAnimating) return;
   isAnimating = true;
 
-  if (e.deltaY > 0) {
-    // SCROLL DOWN
-    gsap.to(block, {
-      xPercent: -100, // Using xPercent for smoother infinite feel
-      duration: 2,
-      repeat: -1,
-      ease: "none",
-    });
-
-    gsap.to(img, {
-      rotate: 180, // Absolute value: moves to 180 and stays there
-      duration: 0.5,
-      onComplete: () => { isAnimating = false; } // Reset flag when done
-    });
-
+  if (direction > 0) {
+    // SCROLL DOWN / SWIPE UP
+    gsap.to(block, { xPercent: -100, duration: 2, repeat: -1, ease: "none" });
+    gsap.to(img, { rotate: 180, duration: 0.5, onComplete: () => isAnimating = false });
   } else {
-    // SCROLL UP (BACK)
-    gsap.to(block, {
-      xPercent: 0,
-      duration: 2,
-      repeat: -1,
-      ease: "none",
-    });
-
-    gsap.to(img, {
-      rotate: 0, // Absolute value: returns to original 0
-      duration: 0.5,
-      onComplete: () => { isAnimating = false; } // Reset flag when done
-    });
+    // SCROLL UP / SWIPE DOWN
+    gsap.to(block, { xPercent: 0, duration: 2, repeat: -1, ease: "none" });
+    gsap.to(img, { rotate: 0, duration: 0.5, onComplete: () => isAnimating = false });
   }
+}
+
+// PC ke liye
+window.addEventListener("wheel", (e) => handleScroll(e.deltaY));
+
+// Mobile ke liye (Touch support)
+let touchStart = 0;
+window.addEventListener("touchstart", (e) => {
+  touchStart = e.touches[0].clientY;
+});
+
+window.addEventListener("touchmove", (e) => {
+  let touchEnd = e.touches[0].clientY;
+  let diff = touchStart - touchEnd; // Agar difference positive hai matlab niche scroll ho raha hai
+  handleScroll(diff);
 });
