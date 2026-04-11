@@ -273,6 +273,9 @@ main #view6 .contactbox .left, main #view6 .contactbox .right {
   flex-direction: column;
   gap: 1.5rem;
 }
+main #view6 .contactbox .right {
+  color: antiquewhite;
+}
 main #view6 .contactbox .circle, main #view6 .contactbox .box {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
