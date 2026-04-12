@@ -173,14 +173,23 @@ main {
     }
 
     .container {
+      position: relative;
+    
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      flex-wrap: wrap;
+      
       gap: 25px;
     }
+    .pro {
+  position: sticky;
+  top: 100px; // thoda niche se start
+  margin-bottom: 150px; // 👈 overlap create karega
+}
 
     .pro {
+      
       width: 300px;
       background: lighten(#091413, 3%);
       padding: 16px;

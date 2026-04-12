@@ -158,11 +158,17 @@ main #view4 h2, main #view5 h2 {
   margin-bottom: 30px;
 }
 main #view4 .container, main #view5 .container {
+  position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   gap: 25px;
+}
+main #view4 .pro, main #view5 .pro {
+  position: sticky;
+  top: 100px;
+  margin-bottom: 150px;
 }
 main #view4 .pro, main #view5 .pro {
   width: 300px;

@@ -207,3 +207,20 @@ window.addEventListener("touchmove", (e) => {
   let diff = touchStart - touchEnd; // Agar difference positive hai matlab niche scroll ho raha hai
   handleScroll(diff);
 });
+//my scroll based stcking of card logic
+let stack = document.querySelectorAll(".stacking .container .pro");
+
+stack.forEach(function(elem) {
+  gsap.to(elem, {
+    opacity: 0,
+    scale: 0.7,
+    stagger: 0.5,
+    scrollTrigger: {
+      trigger: elem,      // The individual card triggers the animation
+      start: "top 15%",   // Starts when the top of the card hits 15% from the top
+      end: "bottom 15%",  // Ends when the bottom of the card hits 15%
+      scrub: true,
+      // markers: true    // Uncomment this to debug the start/end points
+    }
+  });
+});
