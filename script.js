@@ -136,7 +136,8 @@ const images = [
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiveycOrxg_87ptVrOKT9j6OatggrM1DsOYA&s",
   "https://i.pinimg.com/736x/44/59/32/4459321c4e61adc58c584aa00788d148.jpg",
   "https://i.pinimg.com/736x/cf/5f/7d/cf5f7dca8d30d52a39f4043f3796d7f0.jpg",
-  "https://i.pinimg.com/736x/c9/5b/6c/c95b6c63866e63b5de07117256a320cc.jpg"
+  "https://i.pinimg.com/736x/c9/5b/6c/c95b6c63866e63b5de07117256a320cc.jpg",
+  "https://i.pinimg.com/1200x/08/a3/2f/08a32fc73758025add069aefdde61b80.jpg"
 ];
 
 if (img1) {
